@@ -1,6 +1,7 @@
 package net.dinaurian.ffmod;
 
 import com.mojang.logging.LogUtils;
+import net.dinaurian.ffmod.item.ModCreativeModeTabs;
 import net.dinaurian.ffmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -31,6 +32,8 @@ public class FFMod {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
 
         // Register the item to a creative tab
@@ -45,9 +48,7 @@ public class FFMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.ALLOSPRITE);
-        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
